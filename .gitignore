@@ -15,3 +15,7 @@ env/
 # Operating System
 .DS_Store
 Thumbs.db
+
+# Generated research files
+*.txt
+!requirements.txt

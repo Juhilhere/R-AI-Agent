@@ -2,6 +2,7 @@ from langchain_community.tools import WikipediaQueryRun, DuckDuckGoSearchRun
 from langchain_community.utilities import WikipediaAPIWrapper
 from langchain.tools import Tool
 from datetime import datetime
+import os
 
 def save_to_txt(data: dict, filename: str = None):
     timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
@@ -13,6 +14,11 @@ def save_to_txt(data: dict, filename: str = None):
         topic = "".join(x for x in topic if x.isalnum() or x in [' ', '-', '_'])  # Remove special chars
         topic = topic.replace(' ', '_')[:50]  # Replace spaces with underscore and limit length
         filename = f"{topic}_{timestamp}.txt"
+    
+    # Check if running on PythonAnywhere
+    if 'PYTHONANYWHERE_SITE' in os.environ:
+        # Use the appropriate directory for PythonAnywhere
+        filename = os.path.join('/home/YourUsername/research_papers', filename)
     
     formatted_text = f"--- Research Output ---\nTimestamp: {timestamp}\n\n"
     

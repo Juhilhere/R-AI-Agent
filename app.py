@@ -103,4 +103,6 @@ def download(filename):
         return jsonify({'error': str(e)}), 404
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # Only use debug=True when running locally
+    is_local = os.environ.get('PYTHONANYWHERE_SITE') is None
+    app.run(debug=is_local)
