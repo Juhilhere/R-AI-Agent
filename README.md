@@ -42,6 +42,7 @@ An AI-powered research assistant that generates comprehensive research papers on
 ## Deployment
 
 This application can be deployed to various platforms:
+
 - Render
 - Heroku
 - PythonAnywhere
